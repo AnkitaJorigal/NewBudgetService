@@ -1,0 +1,43 @@
+
+
+openapi: 3.0.3
+info:
+  title: Budget Service API
+  version: 1.0.0
+paths:
+  /api/budgets:
+   post:
+    summary: Create budget
+    requestBody:
+     required: true
+     content:
+      application/json:
+       schema:
+        $ref: '#/components/schemas/Budget'
+    responses:
+     '200':
+       description: created
+/api/budgets/{category}:
+get:
+ summary: Get budget by category
+ parameters:
+  - name: category
+    in: path
+    required: true
+    schema:
+     type: string
+ responses:
+  '200':
+    description: OK
+components:
+ schemas:
+  Budget:
+   type: object
+   properties:
+     id:
+      type: integer
+   category:
+      type: string
+   amount:
+      type: number
+      format: double
