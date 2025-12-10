@@ -1,0 +1,118 @@
+{
+  "info": {
+    "name": "Personal Finance Microservices",
+    "_postman_id": "f1dcae7e-5555-4c1a-97e6-283abd233ef5",
+    "description": "Postman collection for Budget, Expense, and Notification microservices.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Budget Service",
+      "item": [
+        {
+          "name": "Create Budget",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"category\":\"Groceries\",\"limitAmount\":5000}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/budgets",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["budgets"]
+            }
+          }
+        },
+        {
+          "name": "Get All Budgets",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8081/budgets",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["budgets"]
+            }
+          }
+        },
+        {
+          "name": "Get Budget By Category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8081/budgets/Groceries",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["budgets", "Groceries"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Expense Service",
+      "item": [
+        {
+          "name": "Create Expense",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"description\":\"Milk\",\"category\":\"Groceries\",\"amount\":80}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/expenses",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["expenses"]
+            }
+          }
+        },
+        {
+          "name": "Get All Expenses",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/expenses",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["expenses"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notification Service",
+      "item": [
+        {
+          "name": "Send Notification",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"category\":\"Groceries\",\"budgetAmount\":5000,\"expenseDescription\":\"Milk\",\"expenseAmount\":5200,\"message\":\"Budget Exceeded!\"}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["notifications"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
